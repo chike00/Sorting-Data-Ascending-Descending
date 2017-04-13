@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta charset="UTF-8">
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" 
+			integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	</head>
+	<body>
+		<div class="container" data-ng-app="myApp" data-ng-controller="myCtrl">
+			<table border="1">
+				<thead>
+					<td>
+						<a href="#" ng-click="sortType = 'Title'; sortReverse = !sortReverse">Title
+						<span data-ng-show="sortType == 'Title' && !sortReverse" class="fa fa-caret-down"></span>
+						<span data-ng-show="sortType == 'Title' && sortReverse" class="fa fa-caret-up"></span></a>
+					</td>
+					<td>
+						<a href="#" ng-click="sortType = 'Creator'; sortReverse = !sortReverse">Author
+						<span data-ng-show="sortType == 'Creator' && !sortReverse" class="fa fa-caret-down"></span>
+						<span data-ng-show="sortType == 'Creator' && sortReverse" class="fa fa-caret-up"></span></a>
+					</td>
+					<td>
+						<a href="#" ng-click="sortType = 'Country'; sortReverse = !sortReverse">Country
+						<span data-ng-show="sortType == 'Country' && !sortReverse" class="fa fa-caret-down"></span>
+						<span data-ng-show="sortType == 'Country' && sortReverse" class="fa fa-caret-up"></span></a>
+					</td>
+					<td>
+						<a href="#" ng-click="sortType = 'CreationDate'; sortReverse = !sortReverse">Date
+						<span data-ng-show="sortType == 'CreationDate' && !sortReverse" class="fa fa-caret-down"></span>
+						<span data-ng-show="sortType == 'CreationDate' && sortReverse" class="fa fa-caret-up"></span></a>
+					</td>
+					<td>
+						<a href="#" ng-click="sortType = 'Status'; sortReverse = !sortReverse">Status
+						<span data-ng-show="sortType == 'Status' && !sortReverse" class="fa fa-caret-down"></span>
+						<span data-ng-show="sortType == 'Status' && sortReverse" class="fa fa-caret-up"></span></a>
+					</td>
+				</thead>
+				<tbody>
+					<tr data-ng-repeat="x in contributions | orderBy:sortType:sortReverse">
+						<td>{{x.Title}}</td>
+						<td>{{x.Creator}}</td>
+						<td>{{x.Country}}</td>
+						<td>{{x.CreationDate | date}}</td>
+						<td>{{x.Status}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<script src="myApp.js"></script>
+	</body>
+</html>
